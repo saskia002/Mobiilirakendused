@@ -6,7 +6,9 @@ IFI6224.DT
 
 
 kloonida arvutisse
+
 npm i -f
+
 npx expo start
 
 
