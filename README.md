@@ -4,6 +4,9 @@ IFI6224.DT
 
 ## Start
 
+
+kloonida arvutisse
+npm i -f
 npx expo start
 
 
