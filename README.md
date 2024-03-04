@@ -4,12 +4,14 @@ IFI6224.DT
 
 ## Start
 
+telefoni laadida "Expo GO" app
 
-kloonida arvutisse
+kloonida koodibaas arvutisse
 
-npm i -f
+npm i -f terminali
 
-npx expo start
+npx expo start terminali
 
+terminali ilmub QR kood, telefoni kaameraga sisse lugeda.
 
 Oleme varem tegelenud React Native-ga, ei esinenud raskusi. Oleme varemgi pannud püsti React appi.
