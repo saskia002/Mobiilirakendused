@@ -8,10 +8,13 @@ telefoni laadida "Expo GO" app
 
 kloonida koodibaas arvutisse
 
-npm i -f terminali
+jooksutada käsk käsureal: - npm i -f
 
-npx expo start terminali
+jooksutada käsk käsureal: - npx expo start
 
 terminali ilmub QR kood, telefoni kaameraga sisse lugeda.
 
-Oleme varem tegelenud React Native-ga, ei esinenud raskusi. Oleme varemgi pannud püsti React appi.
+## Liikmed
+
+    - Saskia Kriibi
+    - Rain Erik Elias
