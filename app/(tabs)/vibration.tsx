@@ -4,9 +4,11 @@ import { Text, View } from "@/components/Themed";
 
 import { Vibration } from "react-native";
 import { useEffect, useState } from "react";
+import { useColorScheme } from "@/components/useColorScheme.web";
 
 export default function TabTwoScreen() {
 	const [durationInput, setDurationInput] = useState("");
+	const colorScheme = useColorScheme();
 
 	const handleVibration = () => {
 		if (!durationInput || isNaN(parseInt(durationInput)) || parseInt(durationInput) < 1) {
@@ -31,9 +33,9 @@ export default function TabTwoScreen() {
 				autoFocus
 				placeholderTextColor="gray"
 				placeholder="Enter duration in seconds"
-				style={styles.input}
+				style={colorScheme === "dark" ? styles.inputDark : styles.inputLight}
 				keyboardType="numeric"
-				value={durationInput ? durationInput : ""}
+				value={durationInput ?? durationInput}
 				onChangeText={(e) => setDurationInput(e)}
 			/>
 			<View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
@@ -70,7 +72,17 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 		marginBottom: 16,
 	},
-	input: {
+	inputLight: {
+		width: "80%",
+		borderColor: "black",
+		borderRadius: 4,
+		color: "black",
+		height: 40,
+		margin: 12,
+		borderWidth: 1,
+		padding: 10,
+	},
+	inputDark: {
 		width: "80%",
 		borderColor: "white",
 		borderRadius: 4,
