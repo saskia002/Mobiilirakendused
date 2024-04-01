@@ -14,6 +14,11 @@ jooksutada käsk käsureal: - npx expo start
 
 terminali ilmub QR kood, telefoni kaameraga sisse lugeda.
 
+--- expo sedistamine puudu
+
+    node 20v on vaja
+    npx create-expo-app --template
+
 ## Liikmed
 
     - Saskia Kriibi
