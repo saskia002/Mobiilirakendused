@@ -2,22 +2,25 @@
 
 IFI6224.DT
 
+# Programmi tekitamine
+
+1. installi arvutisse node.js viimane LTS release
+
+2. kõige lihtsam on manageerida ja jooksutada sääraseid programme Visual Studio Code abiga
+
+3. et alustada uue projektiga, kirjutada VS terminali - npx create-expo-app my-app
+
 ## Start
 
-telefoni laadida "Expo GO" app
+1. telefoni laadida "Expo GO" app
 
-kloonida koodibaas arvutisse
+2. kloonida repo arvutisse
 
-jooksutada käsk käsureal: - npm i -f
+3. ava repo kaust visualis, seejärel terminalis: - npm install -f
 
-jooksutada käsk käsureal: - npx expo start
+4. järgmisena: - npx expo start
 
-terminali ilmub QR kood, telefoni kaameraga sisse lugeda.
-
---- expo sedistamine puudu
-
-    node 20v on vaja
-    npx create-expo-app --template
+5. terminal prindib QR koodi, skänni telefoni kaameraga, kui oled korralikult installinud Expo GO siis avaneb.
 
 ## Liikmed
 
