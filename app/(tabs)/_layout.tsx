@@ -32,7 +32,7 @@ export default function TabLayout() {
 					height: "100%",
 				},
 				tabBarStyle: {
-					height: 50,
+					//height: 50,
 					display: "flex",
 					flexDirection: "row",
 					justifyContent: "center",
