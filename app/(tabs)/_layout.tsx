@@ -76,6 +76,14 @@ export default function TabLayout() {
 					//tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
 				}}
 			/>
+			<Tabs.Screen
+				name="soundrec"
+				options={{
+					title: "Sound",
+					unmountOnBlur: true,
+					//tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+				}}
+			/>
 		</Tabs>
 	);
 }

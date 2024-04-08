@@ -4,11 +4,13 @@ IFI6224.DT
 
 # Programmi tekitamine
 
-1. installi arvutisse node.js viimane LTS release
+1. installi arvutisse node.js viimane LTS release (arendus toimub v20 peal)
 
 2. kõige lihtsam on manageerida ja jooksutada sääraseid programme Visual Studio Code abiga
 
 3. et alustada uue projektiga, kirjutada VS terminali - npx create-expo-app my-app
+
+TÄIENDADA
 
 ## Start
 
