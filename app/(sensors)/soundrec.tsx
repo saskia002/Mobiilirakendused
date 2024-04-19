@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, StyleSheet, Button, Text } from "react-native";
+import { View, StyleSheet, Button, Text, TouchableOpacity } from "react-native";
 import { Audio } from "expo-av";
 
 export default function App() {
@@ -13,21 +13,17 @@ export default function App() {
 	const [IsRecording, SetIsRecording] = useState<boolean>(false);
 	const [IsPLaying, SetIsPLaying] = useState<boolean>(false);
 
-	// Initial Load to get the audio permission
 	useEffect(() => {
 		GetPermission();
 	}, []);
 
-	// Function to get the audio permission
 	const GetPermission = async () => {
 		const getAudioPerm = await Audio.requestPermissionsAsync();
 		SetAudioPermission(getAudioPerm.granted);
 	};
 
-	// Function to start recording
 	const StartRecording = async () => {
 		try {
-			// Check if user has given the permission to record
 			if (AudioPermission === true) {
 				try {
 					// Prepare the Audio Recorder
@@ -46,13 +42,10 @@ export default function App() {
 		} catch (error) {}
 	};
 
-	// Function to stop recording
 	const StopRecording = async () => {
 		try {
-			// Stop recording
 			await AudioRecorder.current.stopAndUnloadAsync();
 
-			// Get the recorded URI here
 			const result = AudioRecorder.current.getURI();
 			if (result) SetRecordedURI(result);
 
@@ -81,31 +74,26 @@ export default function App() {
 		} catch (error) {}
 	};
 
-	// Function to stop the playing audio
 	const StopPlaying = async () => {
 		try {
-			//Get Player Status
 			const playerStatus = await AudioPlayer.current.getStatusAsync();
-
-			// If song is playing then stop it
 			if (playerStatus.isLoaded === true) await AudioPlayer.current.unloadAsync();
-
 			SetIsPLaying(false);
 		} catch (error) {}
 	};
 
 	return (
 		<View style={styles.container}>
-			<Button
-				title={IsRecording ? "Stop Recording" : "Start Recording"}
-				color={IsRecording ? "red" : "green"}
-				onPress={IsRecording ? StopRecording : StartRecording}
-			/>
-			<Button
-				title={IsPLaying ? "Stop Sound" : "Play Sound"}
-				color={IsPLaying ? "red" : "orange"}
-				onPress={IsPLaying ? StopPlaying : PlayRecordedAudio}
-			/>
+			<TouchableOpacity style={styles.button} onPress={IsRecording ? StopRecording : StartRecording}>
+				<Text style={styles.buttonText}>{IsRecording ? "Stop Recording" : "Start Recording"}</Text>
+			</TouchableOpacity>
+
+			{RecordedURI && (
+				<TouchableOpacity style={styles.button} onPress={IsPLaying ? StopPlaying : PlayRecordedAudio}>
+					<Text style={styles.buttonText}>{IsPLaying ? "Stop Sound" : "Play Sound"}</Text>
+				</TouchableOpacity>
+			)}
+
 			<Text>{RecordedURI}</Text>
 		</View>
 	);
@@ -117,5 +105,22 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		backgroundColor: "#ecf0f1",
 		padding: 8,
+		gap: 18,
+	},
+	button: {
+		fontWeight: "bold",
+		textTransform: "uppercase",
+		justifyContent: "center",
+		alignItems: "center",
+		display: "flex",
+		backgroundColor: "#3498db",
+		padding: 12,
+		borderRadius: 4,
+		height: 48,
+		width: "100%",
+	},
+	buttonText: {
+		color: "#fff",
+		fontWeight: "bold",
 	},
 });

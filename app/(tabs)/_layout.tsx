@@ -21,6 +21,11 @@ export default function TabLayout() {
 				tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
 				// Disable the static render of the header on web
 				// to prevent a hydration error in React Navigation v6.
+				//headerStyle: {
+				//	display: "none",
+				//	marginBottom: 12,
+				//},
+
 				headerShown: useClientOnlyValue(false, true),
 				tabBarLabelStyle: {
 					fontSize: 20,
@@ -51,35 +56,13 @@ export default function TabLayout() {
 				name="index"
 				options={{
 					title: "Main",
-					//tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-					headerRight: () => (
-						<Link href="/modal" asChild>
-							<Pressable>
-								{({ pressed }) => (
-									<FontAwesome
-										name="info-circle"
-										size={25}
-										color={Colors[colorScheme ?? "light"].text}
-										style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-									/>
-								)}
-							</Pressable>
-						</Link>
-					),
-				}}
-			/>
-			<Tabs.Screen
-				name="vibration"
-				options={{
-					title: "Vibration",
 					unmountOnBlur: true,
-					//tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
 				}}
 			/>
 			<Tabs.Screen
-				name="soundrec"
+				name="sensorSelect"
 				options={{
-					title: "Sound",
+					title: "sensor",
 					unmountOnBlur: true,
 					//tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
 				}}

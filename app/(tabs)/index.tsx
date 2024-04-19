@@ -1,6 +1,5 @@
 import { Platform, StyleSheet } from "react-native";
 
-import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
 import * as Location from "expo-location";
 import { useEffect, useState } from "react";
@@ -12,7 +11,7 @@ export default function TabOneScreen() {
 
 	useEffect(() => {
 		(async () => {
-			if (Platform.OS === "android" && !Device.isDevice) {
+			if (Platform.OS === "android" && !Device?.isDevice) {
 				setErrorMsg("Oops, this will not work on Snack in an Android Emulator. Try it on your device!");
 				return;
 			}
@@ -48,9 +47,11 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: "center",
 		justifyContent: "center",
-		maxWidth: 600,
 	},
 	gps: {
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
 		width: "80%",
 	},
 	title: {

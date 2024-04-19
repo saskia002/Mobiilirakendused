@@ -15,7 +15,7 @@ export default function TabTwoScreen() {
 			return;
 		}
 
-		Vibration.vibrate(parseInt(durationInput) * 1000);
+		Vibration.vibrate(parseInt(durationInput));
 	};
 
 	// on unmount
@@ -31,8 +31,7 @@ export default function TabTwoScreen() {
 
 			<TextInput
 				autoFocus
-				placeholderTextColor="gray"
-				placeholder="Enter duration in seconds"
+				placeholder="Enter duration in ms"
 				style={colorScheme === "dark" ? styles.inputDark : styles.inputLight}
 				keyboardType="numeric"
 				value={durationInput ?? durationInput}
@@ -54,6 +53,7 @@ const styles = StyleSheet.create({
 		flexDirection: "column",
 		alignItems: "flex-end",
 		width: "80%",
+		backgroundColor: "white",
 	},
 	separator: {
 		marginVertical: 6,
@@ -66,6 +66,8 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 		width: "100%",
+		backgroundColor: "white",
+		color: "white",
 	},
 	title: {
 		fontSize: 24,
@@ -100,9 +102,9 @@ const styles = StyleSheet.create({
 		display: "flex",
 		backgroundColor: "#3498db",
 		padding: 12,
-		borderRadius: 4,
+		borderRadius: 5,
 		height: 48,
-		width: "auto",
+		width: "100%",
 	},
 	buttonText: {
 		color: "#fff",
