@@ -1,4 +1,5 @@
-import { Camera, CameraType, FlashMode } from "expo-camera";
+import { CameraType, FlashMode } from "expo-camera/build/legacy/Camera.types";
+import Camera from "expo-camera/src/legacy/Camera";
 import { useState } from "react";
 import { Button, ImageBackground, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 let camera: Camera;
