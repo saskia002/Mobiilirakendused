@@ -56,6 +56,13 @@ export default function TabLayout() {
 					unmountOnBlur: true,
 				}}
 			/>
+			<Tabs.Screen
+				name="saveData"
+				options={{
+					title: "Main",
+					unmountOnBlur: true,
+				}}
+			/>
 		</Tabs>
 	);
 }

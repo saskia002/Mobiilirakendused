@@ -26,6 +26,11 @@ export default function App() {
 						<Text style={styles.buttonText}>sensors</Text>
 					</Pressable>
 				</Link>
+				<Link href="/(sensors)/saveData" asChild style={styles.button}>
+					<Pressable>
+						<Text style={styles.buttonText}>saveFile</Text>
+					</Pressable>
+				</Link>
 			</View>
 		</View>
 	);
