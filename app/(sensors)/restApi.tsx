@@ -81,10 +81,10 @@ export default function App() {
 						return (
 							<View key={d.id} style={{ marginBottom: 12 }}>
 								<Image source={{ uri: d.avatar }} style={{ width: 100, height: 100 }} />
-								<View>
+								<Text>
 									{d.first_name} {d.last_name}
-								</View>
-								<View>{d.email}</View>
+								</Text>
+								<Text>{d.email}</Text>
 								<Button mode="contained" onPress={() => deleteUserData(d.id)}>
 									Delete
 								</Button>

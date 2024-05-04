@@ -28,13 +28,13 @@ export default function TabLayout() {
 				tabBarLabelPosition: "below-icon",
 			}}
 		>
-			{/*<Tabs.Screen
+			<Tabs.Screen
 				name="camera"
 				options={{
 					title: "Main",
 					unmountOnBlur: true,
 				}}
-			/>*/}
+			/>
 			<Tabs.Screen
 				name="soundrec"
 				options={{
