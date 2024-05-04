@@ -60,9 +60,9 @@ export default function TabLayout() {
 				}}
 			/>
 			<Tabs.Screen
-				name="kodutööd"
+				name="ktSelect"
 				options={{
-					title: "sensor",
+					title: "kodutööd",
 					unmountOnBlur: true,
 					//tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
 				}}
