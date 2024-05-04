@@ -31,6 +31,11 @@ export default function App() {
 						<Text style={styles.buttonText}>saveFile</Text>
 					</Pressable>
 				</Link>
+				<Link href="/(sensors)/restApi" asChild style={styles.button}>
+					<Pressable>
+						<Text style={styles.buttonText}>RestApi</Text>
+					</Pressable>
+				</Link>
 			</View>
 		</View>
 	);

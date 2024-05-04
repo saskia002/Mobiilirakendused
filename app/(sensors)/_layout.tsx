@@ -63,6 +63,13 @@ export default function TabLayout() {
 					unmountOnBlur: true,
 				}}
 			/>
+			<Tabs.Screen
+				name="restApi"
+				options={{
+					title: "Main",
+					unmountOnBlur: true,
+				}}
+			/>
 		</Tabs>
 	);
 }

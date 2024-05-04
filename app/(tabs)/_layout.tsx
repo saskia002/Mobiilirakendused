@@ -60,7 +60,7 @@ export default function TabLayout() {
 				}}
 			/>
 			<Tabs.Screen
-				name="sensorSelect"
+				name="kodutööd"
 				options={{
 					title: "sensor",
 					unmountOnBlur: true,
