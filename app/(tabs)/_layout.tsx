@@ -60,6 +60,13 @@ export default function TabLayout() {
 				}}
 			/>
 			<Tabs.Screen
+				name="map"
+				options={{
+					unmountOnBlur: true,
+					//headerShown: false,
+				}}
+			/>
+			<Tabs.Screen
 				name="ktSelect"
 				options={{
 					title: "kodutööd",

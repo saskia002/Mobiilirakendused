@@ -63,6 +63,7 @@ export default function App() {
 			},
 		})
 			.then((response) => {
+				console.log(response);
 				response.json().then((data) => {
 					setVisible(false);
 					setSnackVisible(true);

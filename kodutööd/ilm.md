@@ -1,0 +1,1 @@
+https://open-meteo.com/en/docs#latitude=59.4165&longitude=24.7994&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,weather_code,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m&hourly=&daily=&wind_speed_unit=ms&timezone=Europe%2FMoscow&forecast_days=1

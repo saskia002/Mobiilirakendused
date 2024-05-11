@@ -70,13 +70,6 @@ export default function TabLayout() {
 					unmountOnBlur: true,
 				}}
 			/>
-			<Tabs.Screen
-				name="augmented"
-				options={{
-					title: "Main",
-					unmountOnBlur: true,
-				}}
-			/>
 		</Tabs>
 	);
 }

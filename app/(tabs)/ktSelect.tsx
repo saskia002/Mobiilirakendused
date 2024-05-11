@@ -36,11 +36,6 @@ export default function App() {
 						<Text style={styles.buttonText}>RestApi</Text>
 					</Pressable>
 				</Link>
-				<Link href="/(sensors)/augmented" asChild style={styles.button}>
-					<Pressable>
-						<Text style={styles.buttonText}>AR</Text>
-					</Pressable>
-				</Link>
 			</View>
 		</View>
 	);
