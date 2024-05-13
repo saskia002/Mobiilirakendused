@@ -36,7 +36,7 @@ export default function App() {
 			method: "DELETE",
 		})
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 				if (response.status === 204) {
 					const newData = data.filter((d) => d.id !== id);
 					setData(newData);
@@ -63,12 +63,12 @@ export default function App() {
 			},
 		})
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 				response.json().then((data) => {
 					setVisible(false);
 					setSnackVisible(true);
 				});
-				console.log(data);
+				// console.log(data);
 			})
 			.catch((error) => {
 				console.log(error);

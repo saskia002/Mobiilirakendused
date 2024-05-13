@@ -60,7 +60,7 @@ function RootLayoutNav() {
 	const colorScheme = useColorScheme();
 
 	const storeData = async (value: string) => {
-		console.log("setting data:" + value);
+		// console.log("setting data:" + value);
 		try {
 			await AsyncStorage.setItem("colorScheme", value);
 		} catch (e) {
@@ -73,7 +73,7 @@ function RootLayoutNav() {
 		try {
 			const value = await AsyncStorage.getItem("colorScheme");
 			if (value !== null) {
-				console.log(value);
+				// console.log(value);
 			}
 		} catch (e) {
 			console.log(e);

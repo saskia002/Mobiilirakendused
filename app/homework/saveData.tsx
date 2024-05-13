@@ -20,10 +20,10 @@ const App = () => {
 	useEffect(() => {
 		const doesExist = fs.getInfoAsync(fs.documentDirectory + "data").then((info) => info.exists);
 		doesExist.then((exists) => {
-			console.log("Directory exists", exists);
+			// console.log("Directory exists", exists);
 			if (!exists) {
 				fs.makeDirectoryAsync(fs.documentDirectory + "data").then(() => {
-					console.log("Directory created");
+					// console.log("Directory created");
 				});
 			} else {
 				//fs.deleteAsync(fs.documentDirectory + "data").then(() => {
@@ -58,14 +58,14 @@ const App = () => {
 			data: await fs.readAsStringAsync(path),
 			uri: path,
 		});
-		console.log("File read", fileContent);
+		// console.log("File read", fileContent);
 	};
 
 	const deleteFile = async () => {
 		Alert.alert("Delete file", "Are you sure you want to delete this file?", [
 			{
 				text: "Cancel",
-				onPress: () => console.log("Cancel Pressed"),
+				// onPress: () => console.log("Cancel Pressed"),
 				style: "cancel",
 			},
 			{
@@ -73,7 +73,7 @@ const App = () => {
 				onPress: () => {
 					const path = `${fileContent.uri}`;
 					fs.deleteAsync(path).then(() => {
-						console.log("File deleted");
+						// console.log("File deleted");
 					});
 					setFfileView(false);
 				},

@@ -15,9 +15,9 @@ export default function TabLayout() {
 	const colorScheme = useColorScheme();
 	const theme = useTheme();
 
-	console.log("theme", theme.colors.secondary);
+	// console.log("theme", theme.colors.secondary);
 
-	console.log("colorScheme", Colors[colorScheme ?? "light"].tint);
+	// console.log("colorScheme", Colors[colorScheme ?? "light"].tint);
 
 	return (
 		<Tabs

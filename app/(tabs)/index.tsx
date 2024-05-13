@@ -100,7 +100,7 @@ export default function App() {
 	}
 
 	function getData() {
-		console.log("Getting data");
+		// console.log("Getting data");
 		fetch(
 			`https://api.open-meteo.com/v1/forecast?latitude=${location?.latitude}&longitude=${location?.longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,weather_code,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m&daily=uv_index_max,precipitation_probability_mean&wind_speed_unit=ms&timezone=auto&forecast_days=1`
 		)
@@ -111,7 +111,7 @@ export default function App() {
 						daily: data.daily,
 					});
 				});
-				console.log("Weather data", weather);
+				// console.log("Weather data", weather);
 			})
 			.catch((error) => {
 				console.error(
