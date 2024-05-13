@@ -8,27 +8,27 @@ export default function App() {
 			<View style={styles.buttonGroup}>
 				<Link href="/(sensors)/vibration" asChild style={styles.button}>
 					<Pressable>
-						<Text style={styles.buttonText}>vibration</Text>
+						<Text style={styles.buttonText}>Vibration</Text>
 					</Pressable>
 				</Link>
 				<Link href="/(sensors)/soundrec" asChild style={styles.button}>
 					<Pressable>
-						<Text style={styles.buttonText}>sound rec</Text>
+						<Text style={styles.buttonText}>Sound Recording</Text>
 					</Pressable>
 				</Link>
 				<Link href="/(sensors)/camera" asChild style={styles.button}>
 					<Pressable>
-						<Text style={styles.buttonText}>camera</Text>
+						<Text style={styles.buttonText}>Camera</Text>
 					</Pressable>
 				</Link>
 				<Link href="/(sensors)/sysSensors" asChild style={styles.button}>
 					<Pressable>
-						<Text style={styles.buttonText}>sensors</Text>
+						<Text style={styles.buttonText}>Sensors</Text>
 					</Pressable>
 				</Link>
 				<Link href="/(sensors)/saveData" asChild style={styles.button}>
 					<Pressable>
-						<Text style={styles.buttonText}>saveFile</Text>
+						<Text style={styles.buttonText}>Save File</Text>
 					</Pressable>
 				</Link>
 				<Link href="/(sensors)/restApi" asChild style={styles.button}>

@@ -62,6 +62,7 @@ export default function TabLayout() {
 			<Tabs.Screen
 				name="map"
 				options={{
+					title: "Map",
 					unmountOnBlur: true,
 					//headerShown: false,
 				}}
@@ -69,7 +70,7 @@ export default function TabLayout() {
 			<Tabs.Screen
 				name="ktSelect"
 				options={{
-					title: "kodutööd",
+					title: "Homework",
 					unmountOnBlur: true,
 					//tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
 				}}

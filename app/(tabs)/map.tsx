@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import MapView, { Marker } from "react-native-maps";
 import { StyleSheet, View, Text, Platform } from "react-native";
 import * as Location from "expo-location";
@@ -10,6 +10,8 @@ export default function App() {
 	const [timeOut, setTimeOut] = useState<number>(50);
 	const [weather, setWeather] = useState<any>(null);
 	const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false);
+
+	const mapRef = useRef<MapView>(null);
 
 	const beaches = [
 		{
@@ -50,14 +52,22 @@ export default function App() {
 		},
 		{
 			id: "7",
-			name: "Antalya",
-			latitude: "36.85",
-			longitude: "30.83",
+			name: "Santos",
+			latitude: "-24.02",
+			longitude: "-46.28",
 		},
 	];
 
 	const handleBeachSelect = (latitude: string, longitude: string) => {
 		setLocation({ latitude: parseFloat(latitude), longitude: parseFloat(longitude) });
+		if (mapRef.current) {
+			mapRef.current.animateToRegion({
+				latitude: parseFloat(latitude),
+				longitude: parseFloat(longitude),
+				latitudeDelta: 0.1,
+				longitudeDelta: 0.1,
+			});
+		}
 	};
 
 	const handleCloseAccordion = () => {
@@ -144,6 +154,8 @@ export default function App() {
 		if (timeOut !== 0) {
 			setTimeOut(timeOut - 1);
 		} else {
+			const longitude = parseFloat(long);
+			const latitude = parseFloat(lat);
 			setLocation({ longitude: long, latitude: lat });
 			setTimeOut(50);
 		}
@@ -154,6 +166,7 @@ export default function App() {
 			{location && weather && (
 				<View style={styles.container}>
 					<MapView
+						ref={mapRef}
 						showsCompass
 						showsScale
 						zoomControlEnabled
