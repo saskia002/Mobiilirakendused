@@ -68,6 +68,7 @@ export default function App() {
 					setVisible(false);
 					setSnackVisible(true);
 				});
+				console.log(data);
 			})
 			.catch((error) => {
 				console.log(error);

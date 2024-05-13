@@ -45,13 +45,13 @@ export default function RootLayout() {
 		return null;
 	}
 
-	if (Platform.OS === "ios") {
-		return (
-			<SafeAreaView style={{ flex: 1 }}>
-				<RootLayoutNav />
-			</SafeAreaView>
-		);
-	}
+	//if (Platform.OS === "ios") {
+	//	return (
+	//		<SafeAreaView style={{ flex: 1 }}>
+	//			<RootLayoutNav />
+	//		</SafeAreaView>
+	//	);
+	//}
 
 	return <RootLayoutNav />;
 }
@@ -90,7 +90,6 @@ function RootLayoutNav() {
 			<PaperProvider>
 				<Stack>
 					<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-					<Stack.Screen name="(sensors)" />
 				</Stack>
 			</PaperProvider>
 		</ThemeProvider>

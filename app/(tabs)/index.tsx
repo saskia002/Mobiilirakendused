@@ -1,8 +1,54 @@
 import React, { useEffect, useState, useRef } from "react";
-import MapView, { Marker } from "react-native-maps";
-import { StyleSheet, View, Text } from "react-native";
+import MapView, { Marker, Overlay } from "react-native-maps";
+import { StyleSheet, View } from "react-native";
 import * as Location from "expo-location";
 import BeachesAccordion from "@/components/BeachesAccordion";
+import { Surface } from "react-native-paper";
+
+const beaches = [
+	{
+		id: "1",
+		name: "Harku",
+		latitude: "59.41",
+		longitude: "24.63",
+	},
+	{
+		id: "2",
+		name: "Maardu",
+		latitude: "59.45",
+		longitude: "24.99",
+	},
+	{
+		id: "3",
+		name: "Vaibla",
+		latitude: "58.4",
+		longitude: "26.07",
+	},
+	{
+		id: "4",
+		name: "Kauksi",
+		latitude: "58.98",
+		longitude: "27.21",
+	},
+	{
+		id: "5",
+		name: "Paralepa",
+		latitude: "58.94",
+		longitude: "23.51",
+	},
+	{
+		id: "6",
+		name: "Pirita",
+		latitude: "59.48",
+		longitude: "24.83",
+	},
+	{
+		id: "7",
+		name: "Santos",
+		latitude: "-24.02",
+		longitude: "-46.28",
+	},
+];
 
 export default function App() {
 	const [location, setLocation] = useState<any>(null);
@@ -12,61 +58,16 @@ export default function App() {
 
 	const mapRef = useRef<MapView>(null);
 
-	const beaches = [
-		{
-			id: "1",
-			name: "Harku",
-			latitude: "59.41",
-			longitude: "24.63",
-		},
-		{
-			id: "2",
-			name: "Maardu",
-			latitude: "59.45",
-			longitude: "24.99",
-		},
-		{
-			id: "3",
-			name: "Vaibla",
-			latitude: "58.4",
-			longitude: "26.07",
-		},
-		{
-			id: "4",
-			name: "Kauksi",
-			latitude: "58.98",
-			longitude: "27.21",
-		},
-		{
-			id: "5",
-			name: "Paralepa",
-			latitude: "58.94",
-			longitude: "23.51",
-		},
-		{
-			id: "6",
-			name: "Pirita",
-			latitude: "59.48",
-			longitude: "24.83",
-		},
-		{
-			id: "7",
-			name: "Santos",
-			latitude: "-24.02",
-			longitude: "-46.28",
-		},
-	];
-
 	const handleBeachSelect = (latitude: string, longitude: string) => {
 		setLocation({ latitude: parseFloat(latitude), longitude: parseFloat(longitude) });
-		if (mapRef.current) {
-			mapRef.current.animateToRegion({
-				latitude: parseFloat(latitude),
-				longitude: parseFloat(longitude),
-				latitudeDelta: 0.1,
-				longitudeDelta: 0.1,
-			});
-		}
+		//if (mapRef.current) {
+		//	mapRef.current.animateToRegion({
+		//		latitude: parseFloat(latitude),
+		//		longitude: parseFloat(longitude),
+		//		latitudeDelta: 0.1,
+		//		longitudeDelta: 0.1,
+		//	});
+		//}
 	};
 
 	const handleCloseAccordion = () => {
@@ -98,6 +99,7 @@ export default function App() {
 	}
 
 	function getData() {
+		console.log("Getting data");
 		fetch(
 			`https://api.open-meteo.com/v1/forecast?latitude=${location?.latitude}&longitude=${location?.longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,weather_code,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m&daily=uv_index_max,precipitation_probability_mean&wind_speed_unit=ms&timezone=auto&forecast_days=1`
 		)
@@ -108,6 +110,7 @@ export default function App() {
 						daily: data.daily,
 					});
 				});
+				console.log("Weather data", weather);
 			})
 			.catch((error) => {
 				console.error(
@@ -160,11 +163,9 @@ export default function App() {
 						ref={mapRef}
 						showsCompass
 						showsScale
-						//zoomControlEnabled
 						showsUserLocation
-						// followsUserLocation
 						loadingEnabled
-						region={{
+						initialRegion={{
 							latitude: location?.latitude,
 							longitude: location?.longitude,
 							latitudeDelta: 1,
@@ -188,28 +189,27 @@ export default function App() {
 					</MapView>
 					{weather?.current && weather?.daily && (
 						<>
-							<View style={styles.mapText}>
-								<View style={styles.mapTextBox}>
-									<Text>Temp: {weather?.current.temperature_2m} °C</Text>
-									<Text>Feels like: {weather?.current.temperature_2m} °C</Text>
-									<Text>Rain: {weather?.current.rain} mm</Text>
-									<Text>Rain prob: {weather?.daily.precipitation_probability_mean} %</Text>
-									<Text>Pres: {weather?.current.pressure_msl} hPa</Text>
-								</View>
-							</View>
+							<Surface style={styles.mapTextBox}>
+								<Text>Temp: {weather?.current.temperature_2m} °C</Text>
+								<Text>Feels like: {weather?.current.temperature_2m} °C</Text>
+								<Text>Rain: {weather?.current.rain} mm</Text>
+								<Text>Rain prob: {weather?.daily.precipitation_probability_mean} %</Text>
+								<Text>Pres: {weather?.current.pressure_msl} hPa</Text>
+							</Surface>
+
+							<BeachesAccordion
+								beaches={beaches}
+								onBeachSelect={handleBeachSelect}
+								handleAccordionPress={handleCloseAccordion}
+								isOpen={isAccordionOpen}
+							/>
 							<View style={styles.epic}>
-								<View style={styles.epicInner}>
+								<Surface style={styles.epicInner}>
 									{calcBeachDay() ? <Text>Perfect day for beach!</Text> : <Text>Not a beach day!</Text>}
 									{calcBBQDay() ? <Text>Perfect day for BBQ!</Text> : <Text>Not a BBQ day!</Text>}
 									{!calcBeachDay() && !calcBBQDay() && <Text>A sad miserable day :(</Text>}
 									{calcBeachDay() && calcBBQDay() && <Text>Absolutely perfect day :)</Text>}
-									<BeachesAccordion
-										beaches={beaches}
-										onBeachSelect={handleBeachSelect}
-										handleAccordionPress={handleCloseAccordion}
-										isOpen={isAccordionOpen}
-									></BeachesAccordion>
-								</View>
+								</Surface>
 							</View>
 						</>
 					)}
@@ -230,7 +230,6 @@ const styles = StyleSheet.create({
 	mapTextBox: {
 		display: "flex",
 		flexDirection: "column",
-		backgroundColor: "white",
 		width: 128,
 		margin: 0,
 		padding: 8,
@@ -251,7 +250,5 @@ const styles = StyleSheet.create({
 	},
 	map: {
 		...StyleSheet.absoluteFillObject,
-		//width: "100%",
-		//height: "100%",
 	},
 });

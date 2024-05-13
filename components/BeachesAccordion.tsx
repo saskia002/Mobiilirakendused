@@ -38,12 +38,7 @@ const BeachesAccordion: React.FC<BeachesAccordionProps> = ({ beaches, onBeachSel
 			style={{ width: 160 }}
 		>
 			{beaches.map((beach) => (
-				<List.Item
-					onPress={() => handleItemClick(beach)}
-					key={beach.id}
-					title={beach.name}
-					style={{ width: 160, padding: 1, backgroundColor: "black" }}
-				/>
+				<List.Item onPress={() => handleItemClick(beach)} key={beach.id} title={beach.name} style={{ width: 160, padding: 1 }} />
 			))}
 		</List.Accordion>
 	);
