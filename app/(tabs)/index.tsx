@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import MapView, { Marker, Overlay } from "react-native-maps";
-import { StyleSheet, View } from "react-native";
+import MapView, { Marker } from "react-native-maps";
+import { StyleSheet, View, StatusBar } from "react-native";
 import * as Location from "expo-location";
 import BeachesAccordion from "@/components/BeachesAccordion";
-import { Surface } from "react-native-paper";
+import { Surface, Text } from "react-native-paper";
 
 const beaches = [
 	{
@@ -156,7 +156,12 @@ export default function App() {
 	};
 
 	return (
-		<>
+		<View
+			style={{
+				flex: 1,
+				marginTop: StatusBar.currentHeight ?? 24 + 2,
+			}}
+		>
 			{location && weather && (
 				<View style={styles.container}>
 					<MapView
@@ -188,7 +193,46 @@ export default function App() {
 						))}
 					</MapView>
 					{weather?.current && weather?.daily && (
-						<>
+						<View
+							style={{
+								display: "flex",
+								height: "100%",
+								flexDirection: "column",
+								justifyContent: "space-between",
+							}}
+						>
+							<Surface
+								style={{
+									display: "flex",
+									flexDirection: "row",
+								}}
+							>
+								<View>
+									<BeachesAccordion
+										beaches={beaches}
+										onBeachSelect={handleBeachSelect}
+										handleAccordionPress={handleCloseAccordion}
+										isOpen={isAccordionOpen}
+									/>
+								</View>
+								<View
+									style={{
+										display: "flex",
+										flexDirection: "column",
+										justifyContent: "flex-start",
+										alignItems: "flex-start",
+										width: "auto",
+										paddingLeft: 12,
+										paddingTop: 4,
+									}}
+								>
+									{calcBeachDay() ? <Text>Perfect day for beach!</Text> : <Text>Not a beach day!</Text>}
+									{calcBBQDay() ? <Text>Perfect day for BBQ!</Text> : <Text>Not a BBQ day!</Text>}
+									{!calcBeachDay() && !calcBBQDay() && <Text>A sad miserable day :(</Text>}
+									{calcBeachDay() && calcBBQDay() && <Text>Absolutely perfect day :)</Text>}
+								</View>
+							</Surface>
+
 							<Surface style={styles.mapTextBox}>
 								<Text>Temp: {weather?.current.temperature_2m} °C</Text>
 								<Text>Feels like: {weather?.current.temperature_2m} °C</Text>
@@ -196,26 +240,11 @@ export default function App() {
 								<Text>Rain prob: {weather?.daily.precipitation_probability_mean} %</Text>
 								<Text>Pres: {weather?.current.pressure_msl} hPa</Text>
 							</Surface>
-
-							<BeachesAccordion
-								beaches={beaches}
-								onBeachSelect={handleBeachSelect}
-								handleAccordionPress={handleCloseAccordion}
-								isOpen={isAccordionOpen}
-							/>
-							<View style={styles.epic}>
-								<Surface style={styles.epicInner}>
-									{calcBeachDay() ? <Text>Perfect day for beach!</Text> : <Text>Not a beach day!</Text>}
-									{calcBBQDay() ? <Text>Perfect day for BBQ!</Text> : <Text>Not a BBQ day!</Text>}
-									{!calcBeachDay() && !calcBBQDay() && <Text>A sad miserable day :(</Text>}
-									{calcBeachDay() && calcBBQDay() && <Text>Absolutely perfect day :)</Text>}
-								</Surface>
-							</View>
-						</>
+						</View>
 					)}
 				</View>
 			)}
-		</>
+		</View>
 	);
 }
 
@@ -242,8 +271,6 @@ const styles = StyleSheet.create({
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "center",
-		alignItems: "center",
-		backgroundColor: "white",
 		width: 180,
 		margin: 0,
 		padding: 8,

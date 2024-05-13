@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { List, Button } from "react-native-paper";
+import { List, Button, Surface } from "react-native-paper";
 
 interface Beach {
 	id: string;
@@ -24,7 +24,6 @@ const BeachesAccordion: React.FC<BeachesAccordionProps> = ({ beaches, onBeachSel
 	};
 
 	const handleItemClick = (beach: Beach) => {
-		// Handle item click, e.g., navigate to beach details screen
 		onBeachSelect(beach.latitude, beach.longitude);
 		setSelectedBeach(beach);
 		setIsAccordionOpen(false);
@@ -35,7 +34,7 @@ const BeachesAccordion: React.FC<BeachesAccordionProps> = ({ beaches, onBeachSel
 			id="beaches-accordion"
 			expanded={isAccordionOpen}
 			onPress={handleAccordionPress}
-			style={{ width: 160 }}
+			style={{ width: 200 }}
 		>
 			{beaches.map((beach) => (
 				<List.Item onPress={() => handleItemClick(beach)} key={beach.id} title={beach.name} style={{ width: 160, padding: 1 }} />

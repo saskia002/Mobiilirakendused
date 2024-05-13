@@ -1,19 +1,19 @@
 import React from "react";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Link, Tabs } from "expo-router";
-import { SafeAreaView } from "react-native";
+import { Tabs } from "expo-router";
 
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
+import { useTheme } from "react-native-paper";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof FontAwesome>["name"]; color: string }) {
-	return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+//function TabBarIcon(props: { name: React.ComponentProps<typeof FontAwesome>["name"]; color: string }) {
+//	return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+//}
 
 export default function TabLayout() {
 	const colorScheme = useColorScheme();
+	const theme = useTheme();
 
 	return (
 		<Tabs
@@ -35,6 +35,7 @@ export default function TabLayout() {
 					alignItems: "center",
 					lineHeight: 50,
 					height: "100%",
+					backgroundColor: "red",
 				},
 				tabBarStyle: {
 					//height: 50,
