@@ -15,18 +15,16 @@ export default function TabLayout() {
 	const colorScheme = useColorScheme();
 	const theme = useTheme();
 
+	console.log("theme", theme.colors.secondary);
+
+	console.log("colorScheme", Colors[colorScheme ?? "light"].tint);
+
 	return (
 		<Tabs
 			screenOptions={{
-				tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-				// Disable the static render of the header on web
-				// to prevent a hydration error in React Navigation v6.
-				//headerStyle: {
-				//	display: "none",
-				//	marginBottom: 12,
-				//},
+				tabBarActiveTintColor: theme.colors.primary,
 
-				headerShown: useClientOnlyValue(false, true),
+				headerShown: true,
 				tabBarLabelStyle: {
 					fontSize: 20,
 					fontWeight: "bold",
@@ -35,7 +33,7 @@ export default function TabLayout() {
 					alignItems: "center",
 					lineHeight: 50,
 					height: "100%",
-					backgroundColor: "red",
+					backgroundColor: theme.colors.elevation.level1,
 				},
 				tabBarStyle: {
 					//height: 50,
@@ -43,6 +41,7 @@ export default function TabLayout() {
 					flexDirection: "row",
 					justifyContent: "center",
 					alignItems: "center",
+					backgroundColor: theme.colors.elevation.level1,
 				},
 
 				tabBarIconStyle: {

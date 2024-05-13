@@ -60,14 +60,14 @@ export default function App() {
 
 	const handleBeachSelect = (latitude: string, longitude: string) => {
 		setLocation({ latitude: parseFloat(latitude), longitude: parseFloat(longitude) });
-		//if (mapRef.current) {
-		//	mapRef.current.animateToRegion({
-		//		latitude: parseFloat(latitude),
-		//		longitude: parseFloat(longitude),
-		//		latitudeDelta: 0.1,
-		//		longitudeDelta: 0.1,
-		//	});
-		//}
+		if (mapRef.current) {
+			mapRef.current.animateToRegion({
+				latitude: parseFloat(latitude),
+				longitude: parseFloat(longitude),
+				latitudeDelta: 0.1,
+				longitudeDelta: 0.1,
+			});
+		}
 	};
 
 	const handleCloseAccordion = () => {
@@ -206,6 +206,8 @@ export default function App() {
 									display: "flex",
 									flexDirection: "row",
 								}}
+								mode="flat"
+								elevation={1}
 							>
 								<View>
 									<BeachesAccordion
@@ -233,7 +235,7 @@ export default function App() {
 								</View>
 							</Surface>
 
-							<Surface style={styles.mapTextBox}>
+							<Surface mode="flat" elevation={1} style={styles.mapTextBox}>
 								<Text>Temp: {weather?.current.temperature_2m} °C</Text>
 								<Text>Feels like: {weather?.current.temperature_2m} °C</Text>
 								<Text>Rain: {weather?.current.rain} mm</Text>
