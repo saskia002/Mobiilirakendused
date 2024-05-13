@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Platform } from "react-native";
+import { StyleSheet, View, Platform } from "react-native";
 import { Barometer, Gyroscope, LightSensor, Magnetometer } from "expo-sensors";
+import { Divider, Text } from "react-native-paper";
 
 export default function App() {
 	const [{ illuminance }, setData] = useState({ illuminance: 0 });
@@ -36,36 +37,29 @@ export default function App() {
 
 	return (
 		<View style={styles.container}>
-			<Text>Light Sensor:</Text>
-			<Text>Illuminance: {Platform.OS === "android" ? `${illuminance} lx` : `Only available on Android`}</Text>
-
-			<Text></Text>
-
-			<Text>Pressure: {pressure} hPa</Text>
-			<Text>Relative Altitude: {Platform.OS === "ios" ? `${relativeAltitude} m` : `Only available on iOS`}</Text>
-
-			<Text></Text>
-
-			<Text>Magnetometer:</Text>
-			<Text>x: {x}</Text>
-			<Text>y: {y}</Text>
-			<Text>z: {z}</Text>
-
-			<Text></Text>
-
-			<Text>Gyroscope:</Text>
-			<Text>x: {data4.x}</Text>
-			<Text>y: {data4.y}</Text>
-			<Text>z: {data4.z}</Text>
+			<View>
+				<Text>Light Sensor:</Text>
+				<Text>Illuminance: {Platform.OS === "android" ? `${illuminance} lx` : `Only available on Android`}</Text>
+				<Divider bold />
+				<Text>Pressure: {pressure} hPa</Text>
+				<Text>Relative Altitude: {Platform.OS === "ios" ? `${relativeAltitude} m` : `Only available on iOS`}</Text>
+				<Divider bold />
+				<Text>Magnetometer:</Text>
+				<Text>x: {x}</Text>
+				<Text>y: {y}</Text>
+				<Text>z: {z}</Text>
+				<Divider bold />
+				<Text>Gyroscope:</Text>
+				<Text>x: {data4.x}</Text>
+				<Text>y: {data4.y}</Text>
+				<Text>z: {data4.z}</Text>
+			</View>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
-		color: "white",
-		backgroundColor: "white",
-		display: "flex",
 		flex: 1,
 		alignItems: "center",
 		justifyContent: "center",

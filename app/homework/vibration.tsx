@@ -1,10 +1,11 @@
-import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
 
 import { Vibration } from "react-native";
 import { useEffect, useState } from "react";
 import { useColorScheme } from "@/components/useColorScheme.web";
+import { Button, TextInput } from "react-native-paper";
 
 export default function TabTwoScreen() {
 	const [durationInput, setDurationInput] = useState("");
@@ -30,6 +31,7 @@ export default function TabTwoScreen() {
 			<Text style={styles.title}>Vibration test</Text>
 
 			<TextInput
+				mode="outlined"
 				autoFocus
 				placeholder="Enter duration in ms"
 				style={colorScheme === "dark" ? styles.inputDark : styles.inputLight}
@@ -39,9 +41,9 @@ export default function TabTwoScreen() {
 			/>
 			<View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
 			<View style={styles.buttonGroup}>
-				<TouchableOpacity style={styles.button} onPress={handleVibration}>
-					<Text style={styles.buttonText}>TEST</Text>
-				</TouchableOpacity>
+				<Button onPress={handleVibration} mode="contained" style={{ width: "100%" }}>
+					TEST
+				</Button>
 			</View>
 		</View>
 	);
@@ -53,7 +55,6 @@ const styles = StyleSheet.create({
 		flexDirection: "column",
 		alignItems: "flex-end",
 		width: "80%",
-		backgroundColor: "white",
 	},
 	separator: {
 		marginVertical: 6,
@@ -66,8 +67,6 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 		width: "100%",
-		backgroundColor: "white",
-		color: "white",
 	},
 	title: {
 		fontSize: 24,

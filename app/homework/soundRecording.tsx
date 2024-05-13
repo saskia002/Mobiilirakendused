@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, StyleSheet, Button, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Audio } from "expo-av";
+import { Button } from "react-native-paper";
 
 export default function App() {
 	// Refs for the audio
@@ -39,7 +40,9 @@ export default function App() {
 				// If user has not given the permission to record, then ask for permission
 				GetPermission();
 			}
-		} catch (error) {}
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const StopRecording = async () => {
@@ -71,7 +74,9 @@ export default function App() {
 					SetIsPLaying(true);
 				}
 			}
-		} catch (error) {}
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const StopPlaying = async () => {
@@ -79,19 +84,21 @@ export default function App() {
 			const playerStatus = await AudioPlayer.current.getStatusAsync();
 			if (playerStatus.isLoaded === true) await AudioPlayer.current.unloadAsync();
 			SetIsPLaying(false);
-		} catch (error) {}
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
 		<View style={styles.container}>
-			<TouchableOpacity style={styles.button} onPress={IsRecording ? StopRecording : StartRecording}>
-				<Text style={styles.buttonText}>{IsRecording ? "Stop Recording" : "Start Recording"}</Text>
-			</TouchableOpacity>
+			<Button mode="contained" style={{ width: "80%" }} onPress={IsPLaying ? StopRecording : StartRecording}>
+				{IsRecording ? "Stop Recording" : "Start Recording"}
+			</Button>
 
 			{RecordedURI && (
-				<TouchableOpacity style={styles.button} onPress={IsPLaying ? StopPlaying : PlayRecordedAudio}>
-					<Text style={styles.buttonText}>{IsPLaying ? "Stop Sound" : "Play Sound"}</Text>
-				</TouchableOpacity>
+				<Button mode="contained" style={{ width: "80%" }} onPress={IsPLaying ? StopPlaying : PlayRecordedAudio}>
+					{IsPLaying ? "Stop Sound" : "Play Sound"}
+				</Button>
 			)}
 
 			<Text>{RecordedURI}</Text>
@@ -102,25 +109,7 @@ export default function App() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: "center",
-		backgroundColor: "#ecf0f1",
-		padding: 8,
-		gap: 18,
-	},
-	button: {
-		fontWeight: "bold",
-		textTransform: "uppercase",
-		justifyContent: "center",
 		alignItems: "center",
-		display: "flex",
-		backgroundColor: "#3498db",
-		padding: 12,
-		borderRadius: 4,
-		height: 48,
-		width: "100%",
-	},
-	buttonText: {
-		color: "#fff",
-		fontWeight: "bold",
+		justifyContent: "center",
 	},
 });

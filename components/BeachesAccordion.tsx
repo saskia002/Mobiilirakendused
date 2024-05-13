@@ -17,12 +17,12 @@ interface BeachesAccordionProps {
 
 const BeachesAccordion: React.FC<BeachesAccordionProps> = ({ beaches, onBeachSelect }) => {
 	const [selectedBeach, setSelectedBeach] = useState<Beach | null>(null);
-	 const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false);
+	const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false);
 
-		const handleAccordionPress = () => {
-			setIsAccordionOpen(!isAccordionOpen);
+	const handleAccordionPress = () => {
+		setIsAccordionOpen(!isAccordionOpen);
 	};
-	
+
 	const handleItemClick = (beach: Beach) => {
 		// Handle item click, e.g., navigate to beach details screen
 		onBeachSelect(beach.latitude, beach.longitude);
@@ -38,13 +38,12 @@ const BeachesAccordion: React.FC<BeachesAccordionProps> = ({ beaches, onBeachSel
 			style={{ width: 160 }}
 		>
 			{beaches.map((beach) => (
-				<Button key={beach.id} onPress={() => handleItemClick(beach)}>
-					<List.Item
-						key={beach.id}
-						title={beach.name}
-						/*description={`Latitude: ${beach.latitude}, Longitude: ${beach.longitude}`}*/ style={{ width: 160, padding: 1 }}
-					/>
-				</Button>
+				<List.Item
+					onPress={() => handleItemClick(beach)}
+					key={beach.id}
+					title={beach.name}
+					style={{ width: 160, padding: 1, backgroundColor: "black" }}
+				/>
 			))}
 		</List.Accordion>
 	);

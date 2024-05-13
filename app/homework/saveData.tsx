@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, View, TouchableOpacity, Alert } from "react-native";
+import { ScrollView, StyleSheet, View, TouchableOpacity, Alert } from "react-native";
 import * as fs from "expo-file-system";
-import { Button, Surface } from "react-native-paper";
+import { Button, Text, TextInput } from "react-native-paper";
 
 type File = {
 	data: string;
@@ -97,7 +97,7 @@ const App = () => {
 					>
 						<View>
 							<Text style={styles.title}>Enter text for your file:</Text>
-							<TextInput value={fileText} onChangeText={setFileText} style={styles.textArea} multiline textAlignVertical="top" />
+							<TextInput value={fileText} onChangeText={setFileText} style={styles.textArea} mode="outlined" multiline textAlignVertical="top" />
 							<Button onPress={saveFile} mode="contained-tonal">
 								Save file
 							</Button>
@@ -115,9 +115,9 @@ const App = () => {
 										.reverse()
 										.filter((file: any) => file.includes(".txt"))
 										.map((file: any) => (
-											<TouchableOpacity style={styles.button} onPress={() => readFile(file)} key={file}>
-												<Text key={file}>{file}</Text>
-											</TouchableOpacity>
+											<Button mode="outlined" onPress={() => readFile(file)} key={file}>
+												{file}
+											</Button>
 										))}
 								</View>
 							)}
@@ -160,25 +160,16 @@ const App = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#fff",
 	},
 	textArea: {
 		height: 200,
-		borderWidth: 1,
-		borderColor: "#ccc",
-		borderRadius: 4,
 		marginBottom: 16,
-		paddingLeft: 16,
-		paddingRight: 16,
-		paddingTop: 16,
-		paddingBottom: 16,
 		fontSize: 18,
 	},
 	title: {
 		fontSize: 24,
 		fontWeight: "bold",
 		marginVertical: 16,
-		color: "#333",
 	},
 	button: {
 		display: "flex",

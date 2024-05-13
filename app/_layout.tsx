@@ -80,10 +80,10 @@ function RootLayoutNav() {
 		}
 	};
 
-	useEffect(() => {
-		storeData("dark");
-		getData();
-	}, []);
+	//useEffect(() => {
+	//	storeData("dark");
+	//	getData();
+	//}, []);
 
 	return (
 		<ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>

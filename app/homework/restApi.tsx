@@ -1,4 +1,4 @@
-import { StyleSheet, View, Image, ScrollView, Alert } from "react-native";
+import { StyleSheet, View, Image, ScrollView } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Dialog, Portal, Snackbar, Text, TextInput } from "react-native-paper";
 import { Formik } from "formik";
@@ -76,29 +76,19 @@ export default function App() {
 
 	return (
 		<View style={{ flex: 1 }}>
-			<ScrollView contentContainerStyle={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+			<ScrollView>
 				<View style={styles.container}>
-					{data.map((d) => {
-						return (
-							<View key={d.id} style={{ marginBottom: 12 }}>
-								<Image source={{ uri: d.avatar }} style={{ width: 100, height: 100 }} />
-								<Text>
-									{d.first_name} {d.last_name}
-								</Text>
-								<Text>{d.email}</Text>
-								<Button mode="contained" onPress={() => deleteUserData(d.id)}>
-									Delete
-								</Button>
-							</View>
-						);
-					})}
-					{data.length === 0 && <Text>No data found</Text>}
-				</View>
-				<View style={styles.container2}>
-					<Button onPress={() => setVisible(true)} mode="contained">
+					<Button
+						onPress={() => setVisible(true)}
+						mode="contained"
+						style={{
+							width: 200,
+							marginVertical: 24,
+						}}
+					>
 						Add new user
 					</Button>
-					<Portal style={{ maxWidth: 800 }}>
+					<Portal>
 						<Dialog visible={visible} onDismiss={hideDialog}>
 							<Dialog.Icon size={38} icon="account-plus" />
 							<Dialog.Title>Add new user</Dialog.Title>
@@ -136,6 +126,32 @@ export default function App() {
 						</Dialog>
 					</Portal>
 				</View>
+				<View style={styles.container}>
+					<View
+						style={{
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							width: "100%",
+						}}
+					>
+						{data.map((d) => {
+							return (
+								<View key={d.id} style={{ marginBottom: 24 }}>
+									<Image source={{ uri: d.avatar }} style={{ width: 100, height: 100 }} />
+									<Text>
+										{d.first_name} {d.last_name}
+									</Text>
+									<Text>{d.email}</Text>
+									<Button mode="contained" style={{ width: "100%" }} onPress={() => deleteUserData(d.id)}>
+										Delete
+									</Button>
+								</View>
+							);
+						})}
+						{data.length === 0 && <Text>No data found</Text>}
+					</View>
+				</View>
 			</ScrollView>
 
 			<Portal>
@@ -158,26 +174,11 @@ export default function App() {
 
 const styles = StyleSheet.create({
 	container: {
-		padding: "5%",
 		flex: 1,
 		columnGap: 32,
 		alignItems: "center",
 		justifyContent: "center",
 		flexWrap: "wrap",
-
 		flexDirection: "row",
-		width: "80%",
-		backgroundColor: "white",
-		color: "black",
-	},
-	container2: {
-		display: "flex",
-		paddingBottom: 20,
-		alignItems: "center",
-		justifyContent: "center",
-
-		width: "80%",
-		backgroundColor: "white",
-		color: "black",
 	},
 });

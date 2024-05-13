@@ -1,40 +1,28 @@
 import React from "react";
-import { View, StyleSheet, Text, Pressable } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { Link } from "expo-router";
+import { Button } from "react-native-paper";
 export default function App() {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Sensor tests</Text>
 			<View style={styles.buttonGroup}>
-				<Link href="/(sensors)/vibration" asChild style={styles.button}>
-					<Pressable>
-						<Text style={styles.buttonText}>Vibration</Text>
-					</Pressable>
+				<Link href="/homework/vibration" asChild style={styles.button}>
+					<Button mode="contained">Vibration</Button>
 				</Link>
-				<Link href="/(sensors)/soundrec" asChild style={styles.button}>
-					<Pressable>
-						<Text style={styles.buttonText}>Sound Recording</Text>
-					</Pressable>
+				<Link href="/homework/soundRecording" asChild style={styles.button}>
+					<Button mode="contained">Sound Recording</Button>
 				</Link>
-				<Link href="/(sensors)/camera" asChild style={styles.button}>
-					<Pressable>
-						<Text style={styles.buttonText}>Camera</Text>
-					</Pressable>
+				<Link href="/homework/camera" asChild style={styles.button}>
+					<Button mode="contained">Camera</Button>
 				</Link>
-				<Link href="/(sensors)/sysSensors" asChild style={styles.button}>
-					<Pressable>
-						<Text style={styles.buttonText}>Sensors</Text>
-					</Pressable>
+				<Link href="/homework/systemSensors" asChild style={styles.button}>
+					<Button mode="contained">Sensors</Button>
 				</Link>
-				<Link href="/(sensors)/saveData" asChild style={styles.button}>
-					<Pressable>
-						<Text style={styles.buttonText}>Save File</Text>
-					</Pressable>
+				<Link href="/homework/saveData" asChild style={styles.button}>
+					<Button mode="contained">Save File</Button>
 				</Link>
-				<Link href="/(sensors)/restApi" asChild style={styles.button}>
-					<Pressable>
-						<Text style={styles.buttonText}>RestApi</Text>
-					</Pressable>
+				<Link href="/homework/restApi" asChild style={styles.button}>
+					<Button mode="contained">RestApi</Button>
 				</Link>
 			</View>
 		</View>
@@ -56,49 +44,9 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		alignItems: "center",
-		justifyContent: "flex-start",
-		width: "100%",
-	},
-	title: {
-		fontSize: 24,
-		fontWeight: "bold",
-		marginBottom: 16,
-		marginTop: 16,
-	},
-	inputLight: {
-		width: "80%",
-		borderColor: "black",
-		borderRadius: 4,
-		color: "black",
-		height: 40,
-		margin: 12,
-		borderWidth: 1,
-		padding: 10,
-	},
-	inputDark: {
-		width: "80%",
-		borderColor: "white",
-		borderRadius: 4,
-		color: "white",
-		height: 40,
-		margin: 12,
-		borderWidth: 1,
-		padding: 10,
+		justifyContent: "center",
 	},
 	button: {
-		fontWeight: "bold",
-		textTransform: "uppercase",
-		justifyContent: "center",
-		alignItems: "center",
-		display: "flex",
-		backgroundColor: "#3498db",
-		padding: 12,
-		borderRadius: 4,
-		height: 48,
 		width: "100%",
-	},
-	buttonText: {
-		color: "#fff",
-		fontWeight: "bold",
 	},
 });

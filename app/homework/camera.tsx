@@ -1,6 +1,10 @@
 //import { CameraType, Camera, FlashMode } from "expo-camera";
+//import { CameraType } from "expo-camera/build/legacy/Camera.types";
 //import { useState } from "react";
 //import { Button, ImageBackground, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+//import { Camera } from "react-native-maps";
+
+import { Text } from "react-native-paper";
 
 //export default function App() {
 //	if (Platform.OS === "web") {
@@ -148,3 +152,7 @@
 //		color: "white",
 //	},
 //});
+
+export default function App() {
+	return <Text>Camera is broken :( sorry</Text>;
+}

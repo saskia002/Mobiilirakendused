@@ -55,13 +55,6 @@ export default function TabLayout() {
 			<Tabs.Screen
 				name="index"
 				options={{
-					title: "Main",
-					unmountOnBlur: true,
-				}}
-			/>
-			<Tabs.Screen
-				name="map"
-				options={{
 					title: "Map",
 					unmountOnBlur: true,
 					//headerShown: false,
@@ -72,7 +65,6 @@ export default function TabLayout() {
 				options={{
 					title: "Homework",
 					unmountOnBlur: true,
-					//tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
 				}}
 			/>
 		</Tabs>
