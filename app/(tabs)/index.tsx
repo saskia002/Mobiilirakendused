@@ -179,6 +179,7 @@ export default function App() {
 							onRegionChangeComplete={(region) => {
 								updateCords(region.longitude, region.latitude);
 							}}
+							rotateEnabled={false}
 						>
 							{beaches.map((beach) => (
 								<Marker
